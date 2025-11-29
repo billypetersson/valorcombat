@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valor Combat | Coming Soon</title>
+  <meta name="description" content="Valor Combat - Unity. Courage. Honor. Strength. Legacy. Coming Soon.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --gold-light: #D4AF37;
+      --gold: #B8960C;
+      --gold-dark: #8B7500;
+      --black: #0A0A0A;
+      --white: #F5F5F0;
+      --gray: #888888;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle gradient overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 50% 0%, rgba(184, 150, 12, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Top accent line */
+    .top-accent {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold-dark) 20%, var(--gold-light) 50%, var(--gold-dark) 80%, transparent 100%);
+      z-index: 100;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      padding-bottom: 100px;
+    }
+
+    /* Logo */
+    .logo-container {
+      margin-bottom: 3rem;
+      animation: fadeInDown 1.2s ease-out;
+    }
+
+    .logo {
+      width: 200px;
+      height: auto;
+      filter: drop-shadow(0 0 40px rgba(184, 150, 12, 0.25));
+    }
+
+    @media (min-width: 768px) {
+      .logo {
+        width: 260px;
+      }
+    }
+
+    /* Divider */
+    .divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 2rem auto;
+      animation: fadeIn 1.5s ease-out 0.5s both;
+    }
+
+    /* Coming Soon */
+    .coming-soon {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 1.2s ease-out 0.6s both;
+    }
+
+    .coming-soon h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      margin-left: 0.3em;
+    }
+
+    .coming-soon p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.8;
+      max-width: 400px;
+    }
+
+    /* Email Signup */
+    .signup-section {
+      text-align: center;
+      animation: fadeInUp 1.2s ease-out 0.8s both;
+    }
+
+    .signup-section p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.1em;
+    }
+
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    @media (min-width: 500px) {
+      .signup-form {
+        flex-direction: row;
+      }
+    }
+
+    .signup-form input[type="email"] {
+      width: 280px;
+      padding: 1rem 1.5rem;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(184, 150, 12, 0.3);
+      outline: none;
+      transition: all 0.4s ease;
+    }
+
+    .signup-form input[type="email"]::placeholder {
+      color: var(--gray);
+    }
+
+    .signup-form input[type="email"]:focus {
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 20px rgba(184, 150, 12, 0.15);
+    }
+
+    .signup-form button {
+      padding: 1rem 2.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .signup-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(184, 150, 12, 0.4);
+    }
+
+    /* Success Message */
+    .success-message {
+      display: none;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      color: var(--gold-light);
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    /* Footer */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem;
+      text-align: center;
+      background: linear-gradient(to top, var(--black) 0%, transparent 100%);
+      z-index: 10;
+    }
+
+    .footer p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: rgba(136, 136, 136, 0.6);
+      letter-spacing: 0.15em;
+    }
+
+    .domains {
+      margin-top: 0.5rem;
+      font-size: 0.65rem;
+      color: rgba(184, 150, 12, 0.4);
+      letter-spacing: 0.1em;
+    }
+
+    /* Corner Accents */
+    .corner-accent {
+      position: fixed;
+      width: 80px;
+      height: 80px;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .corner-accent.top-left {
+      top: 20px;
+      left: 20px;
+      border-top: 1px solid var(--gold);
+      border-left: 1px solid var(--gold);
+    }
+
+    .corner-accent.top-right {
+      top: 20px;
+      right: 20px;
+      border-top: 1px solid var(--gold);
+      border-right: 1px solid var(--gold);
+    }
+
+    .corner-accent.bottom-left {
+      bottom: 70px;
+      left: 20px;
+      border-bottom: 1px solid var(--gold);
+      border-left: 1px solid var(--gold);
+    }
+
+    .corner-accent.bottom-right {
+      bottom: 70px;
+      right: 20px;
+      border-bottom: 1px solid var(--gold);
+      border-right: 1px solid var(--gold);
+    }
+
+    @media (max-width: 600px) {
+      .corner-accent {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-accent"></div>
+
+  <div class="corner-accent top-left"></div>
+  <div class="corner-accent top-right"></div>
+  <div class="corner-accent bottom-left"></div>
+  <div class="corner-accent bottom-right"></div>
+
+  <div class="container">
+    <div class="logo-container">
+      <img src="logo.png" alt="Valor Combat" class="logo">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="coming-soon">
+      <h2>COMING SOON</h2>
+      <p>We're forging something extraordinary. Stay tuned for the official launch.</p>
+    </div>
+
+    <div class="signup-section">
+      <p>Be the first to know when we launch</p>
+      <form class="signup-form" id="signupForm">
+        <input type="email" placeholder="Enter your email" required id="emailInput">
+        <button type="submit">NOTIFY ME</button>
+      </form>
+      <div class="success-message" id="successMessage">
+        Thank you. You'll be notified when we launch.
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 VALOR COMBAT. ALL RIGHTS RESERVED.</p>
+    <div class="domains">valorcombat.se • valorcombat.eu</div>
+  </footer>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const form = document.getElementById('signupForm');
+      const successMessage = document.getElementById('successMessage');
+      form.style.display = 'none';
+      successMessage.classList.add('show');
+    });
+  </script>
+</body>
+
+</html>
