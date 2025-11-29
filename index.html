@@ -139,91 +139,6 @@
       max-width: 400px;
     }
 
-    /* Email Signup */
-    .signup-section {
-      text-align: center;
-      animation: fadeInUp 1.2s ease-out 0.8s both;
-    }
-
-    .signup-section p {
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--gray);
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.1em;
-    }
-
-    .signup-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    @media (min-width: 500px) {
-      .signup-form {
-        flex-direction: row;
-      }
-    }
-
-    .signup-form input[type="email"] {
-      width: 280px;
-      padding: 1rem 1.5rem;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      color: var(--white);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(184, 150, 12, 0.3);
-      outline: none;
-      transition: all 0.4s ease;
-    }
-
-    .signup-form input[type="email"]::placeholder {
-      color: var(--gray);
-    }
-
-    .signup-form input[type="email"]:focus {
-      border-color: var(--gold);
-      background: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 0 20px rgba(184, 150, 12, 0.15);
-    }
-
-    .signup-form button {
-      padding: 1rem 2.5rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      color: var(--black);
-      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
-      border: none;
-      cursor: pointer;
-      transition: all 0.4s ease;
-    }
-
-    .signup-form button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(184, 150, 12, 0.4);
-    }
-
-    /* Success Message */
-    .success-message {
-      display: none;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.9rem;
-      color: var(--gold-light);
-      margin-top: 1rem;
-      letter-spacing: 0.1em;
-    }
-
-    .success-message.show {
-      display: block;
-      animation: fadeIn 0.5s ease-out;
-    }
-
     /* Footer */
     .footer {
       position: fixed;
@@ -351,33 +266,12 @@
       <h2>COMING SOON</h2>
       <p>We're forging something extraordinary. Stay tuned for the official launch.</p>
     </div>
-
-    <div class="signup-section">
-      <p>Be the first to know when we launch</p>
-      <form class="signup-form" id="signupForm">
-        <input type="email" placeholder="Enter your email" required id="emailInput">
-        <button type="submit">NOTIFY ME</button>
-      </form>
-      <div class="success-message" id="successMessage">
-        Thank you. You'll be notified when we launch.
-      </div>
-    </div>
   </div>
 
   <footer class="footer">
     <p>© 2025 VALOR COMBAT. ALL RIGHTS RESERVED.</p>
     <div class="domains">valorcombat.se • valorcombat.eu</div>
   </footer>
-
-  <script>
-    document.getElementById('signupForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const form = document.getElementById('signupForm');
-      const successMessage = document.getElementById('successMessage');
-      form.style.display = 'none';
-      successMessage.classList.add('show');
-    });
-  </script>
 </body>
 
 </html>
