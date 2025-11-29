@@ -76,18 +76,31 @@
     /* Logo */
     .logo-container {
       margin-bottom: 3rem;
-      animation: fadeInDown 1.2s ease-out;
+      opacity: 0;
+      animation: logoFadeIn 2s ease-out forwards;
     }
 
-    .logo {
+    .logo-svg {
       width: 200px;
       height: auto;
       filter: drop-shadow(0 0 40px rgba(184, 150, 12, 0.25));
     }
 
     @media (min-width: 768px) {
-      .logo {
+      .logo-svg {
         width: 260px;
+      }
+    }
+
+    /* Logo animation */
+    @keyframes logoFadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
       }
     }
 
@@ -329,7 +342,7 @@
 
   <div class="container">
     <div class="logo-container">
-      <img src="logo.png" alt="Valor Combat" class="logo">
+      <img src="logo.png" alt="Valor Combat" class="logo-svg">
     </div>
 
     <div class="divider"></div>
